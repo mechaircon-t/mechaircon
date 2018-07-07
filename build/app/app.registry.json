@@ -1,0 +1,37 @@
+{
+  "namespace": "App",
+  "fsNamespace": "app",
+  "loader": "../app.js",
+  "global": "app.global.js",
+  "core": "app.iqjpnrrj.js",
+  "corePolyfilled": "app.eeqcbigw.js",
+  "components": {
+    "app-home": {
+      "$": "47zdvgrt"
+    },
+    "app-root": {
+      "$": "uhycq8qg"
+    },
+    "ma-about": {
+      "$": "1slpqur3"
+    },
+    "ma-clients": {
+      "$": "qpblak66"
+    },
+    "ma-footer": {
+      "$": "uhycq8qg"
+    },
+    "ma-header": {
+      "$": "47zdvgrt"
+    },
+    "ma-navbar": {
+      "$": "uhycq8qg"
+    },
+    "ma-services": {
+      "$": "9wlm2pni"
+    },
+    "ma-team": {
+      "$": "d722qgo9"
+    }
+  }
+}
