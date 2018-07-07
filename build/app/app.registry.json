@@ -10,7 +10,7 @@
       "$": "bznsljo9"
     },
     "app-root": {
-      "$": "b093f1ns"
+      "$": "645g1yqz"
     },
     "ma-about": {
       "$": "1slpqur3"
@@ -19,28 +19,19 @@
       "$": "qpblak66"
     },
     "ma-footer": {
-      "$": "b093f1ns"
+      "$": "645g1yqz"
     },
     "ma-header": {
       "$": "bznsljo9"
     },
     "ma-navbar": {
-      "$": "b093f1ns"
+      "$": "645g1yqz"
     },
     "ma-services": {
       "$": "9wlm2pni"
     },
     "ma-team": {
       "$": "itjwmxun"
-    },
-    "stencil-route": {
-      "$": "b093f1ns"
-    },
-    "stencil-route-link": {
-      "$": "b093f1ns"
-    },
-    "stencil-router": {
-      "$": "b093f1ns"
     }
   }
 }
