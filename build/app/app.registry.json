@@ -2,36 +2,45 @@
   "namespace": "App",
   "fsNamespace": "app",
   "loader": "../app.js",
+  "corePolyfilled": "es5-build-disabled.js",
   "global": "app.global.js",
-  "core": "app.iqjpnrrj.js",
-  "corePolyfilled": "app.eeqcbigw.js",
+  "core": "app.core.js",
   "components": {
     "app-home": {
-      "$": "bznsljo9"
+      "$": "app-home"
     },
     "app-root": {
-      "$": "645g1yqz"
+      "$": "app-root"
     },
     "ma-about": {
-      "$": "1slpqur3"
+      "$": "ma-about"
     },
     "ma-clients": {
-      "$": "qpblak66"
+      "$": "ma-clients"
     },
     "ma-footer": {
-      "$": "645g1yqz"
+      "$": "app-root"
     },
     "ma-header": {
-      "$": "bznsljo9"
+      "$": "app-home"
     },
     "ma-navbar": {
-      "$": "645g1yqz"
+      "$": "app-root"
     },
     "ma-services": {
-      "$": "9wlm2pni"
+      "$": "ma-services"
     },
     "ma-team": {
-      "$": "itjwmxun"
+      "$": "ma-team"
+    },
+    "stencil-route": {
+      "$": "app-root"
+    },
+    "stencil-route-link": {
+      "$": "app-root"
+    },
+    "stencil-router": {
+      "$": "app-root"
     }
   }
 }
