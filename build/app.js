@@ -1,5 +1,138 @@
 /*!
  * Built with http://stenciljs.com
- * 2018-06-07T17:56:07
+ * 2018-06-07T17:57:56
  */
-!function(e,t,r,o,n,s,i,c,a,l,u,p,m,d){for((u=e.App=e.App||{}).components=a,(m=a.filter(function(e){return e[2]}).map(function(e){return e[0]})).length&&((p=t.createElement("style")).innerHTML=m.join()+"{visibility:hidden}.hydrated{visibility:inherit}",p.setAttribute("data-styles",""),t.head.insertBefore(p,t.head.firstChild)),function(e,t,r){(e["s-apps"]=e["s-apps"]||[]).push("App"),r.componentOnReady||(r.componentOnReady=function(){var t=this;function r(r){if(t.nodeName.indexOf("-")>0){for(var o=e["s-apps"],n=0,s=0;s<o.length;s++)if(e[o[s]].componentOnReady){if(e[o[s]].componentOnReady(t,r))return;n++}if(n<o.length)return void(e["s-cr"]=e["s-cr"]||[]).push([t,r])}r(null)}return e.Promise?new e.Promise(r):{then:r}})}(e,0,l),n=n||u.resourcesUrl,p=(m=t.querySelectorAll("script")).length-1;p>=0&&!(d=m[p]).src&&!d.hasAttribute("data-resources-url");p--);m=d.getAttribute("data-resources-url"),!n&&m&&(n=m),!n&&d.src&&(n=(m=d.src.split("/").slice(0,-1)).join("/")+(m.length?"/":"")+"app/"),p=t.createElement("script"),function(e,t,r,o){return!(t.search.indexOf("core=esm")>0)&&(!(!(t.search.indexOf("core=es5")>0||"file:"===t.protocol)&&e.customElements&&e.customElements.define&&e.fetch&&e.CSS&&e.CSS.supports&&e.CSS.supports("color","var(--c)")&&"noModule"in r)||function(e){try{return new Function('import("")'),!1}catch(e){}return!0}())}(e,e.location,p)?p.src=n+"app.eeqcbigw.js":(p.src=n+"app.iqjpnrrj.js",p.setAttribute("type","module"),p.setAttribute("crossorigin",!0)),p.setAttribute("data-resources-url",n),p.setAttribute("data-namespace","app"),t.head.appendChild(p)}(window,document,0,0,0,0,0,0,[["app-home","bznsljo9",1],["app-root","qniufdmv",1],["ma-about","1slpqur3",1],["ma-clients","qpblak66",1],["ma-footer","qniufdmv",1],["ma-header","bznsljo9",1,[["carouselImgs",5],["clear",5],["index",5]]],["ma-navbar","qniufdmv",1,[["elem",7]]],["ma-services","9wlm2pni",1],["ma-team","itjwmxun",1,[["team",5]]],["stencil-route","qniufdmv",1,[["component",1,0,1,2],["componentProps",1],["componentUpdated",1],["el",7],["exact",1,0,1,3],["group",1,0,1,2],["groupMatch",1],["history",1],["isServer",3,0,0,0,"isServer"],["location",1],["match",5],["queue",3,0,0,0,"queue"],["routeRender",1],["scrollTopOffset",1,0,"scroll-top-offset",4],["url",1,0,1,2]]],["stencil-route-link","qniufdmv",0,[["activeClass",1,0,"active-class",2],["anchorClass",1,0,"anchor-class",2],["anchorRole",1,0,"anchor-role",2],["anchorTabIndex",1,0,"anchor-tab-index",2],["anchorTitle",1,0,"anchor-title",2],["custom",1,0,1,2],["el",7],["exact",1,0,1,3],["history",1],["location",1],["match",5],["root",1,0,1,2],["strict",1,0,1,3],["url",1,0,1,2],["urlMatch",1,0,"url-match",2]]],["stencil-route-switch","qniufdmv",0,[["el",7],["group",1,0,1,2],["location",1],["queue",3,0,0,0,"queue"],["scrollTopOffset",1,0,"scroll-top-offset",4]]],["stencil-router","qniufdmv",0,[["history",5],["historyType",1,0,"history-type",2],["location",5],["root",1,0,1,2],["titleSuffix",1,0,"title-suffix",2]]]],HTMLElement.prototype);
+(function(win, doc, namespace, fsNamespace, resourcesUrl, appCore, appCoreSsr, appCorePolyfilled, hydratedCssClass, components) {
+
+  function init(win, doc, namespace, fsNamespace, resourcesUrl, appCore, appCorePolyfilled, hydratedCssClass, components, HTMLElementPrototype, App, x, y, scriptElm) {
+    // create global namespace if it doesn't already exist
+    App = win[namespace] = win[namespace] || {};
+    App.components = components;
+    y = components.filter(function (c) { return c[2]; }).map(function (c) { return c[0]; });
+    if (y.length) {
+        // auto hide components until they been fully hydrated
+        // reusing the "x" and "i" variables from the args for funzies
+        x = doc.createElement('style');
+        x.innerHTML = y.join() + '{visibility:hidden}.' + hydratedCssClass + '{visibility:inherit}';
+        x.setAttribute('data-styles', '');
+        doc.head.insertBefore(x, doc.head.firstChild);
+    }
+    createComponentOnReadyPrototype(win, namespace, HTMLElementPrototype);
+    resourcesUrl = resourcesUrl || App.resourcesUrl;
+    // figure out the script element for this current script
+    y = doc.querySelectorAll('script');
+    for (x = y.length - 1; x >= 0; x--) {
+        scriptElm = y[x];
+        if (scriptElm.src || scriptElm.hasAttribute('data-resources-url')) {
+            break;
+        }
+    }
+    // get the resource path attribute on this script element
+    y = scriptElm.getAttribute('data-resources-url');
+    if (!resourcesUrl && y) {
+        // the script element has a data-resources-url attribute, always use that
+        resourcesUrl = y;
+    }
+    if (!resourcesUrl && scriptElm.src) {
+        // we don't have an exact resourcesUrl, so let's
+        // figure it out relative to this script's src and app's filesystem namespace
+        y = scriptElm.src.split('/').slice(0, -1);
+        resourcesUrl = (y.join('/')) + (y.length ? '/' : '') + fsNamespace + '/';
+    }
+    // request the core this browser needs
+    // test for native support of custom elements and fetch
+    // if either of those are not supported, then use the core w/ polyfills
+    // also check if the page was build with ssr or not
+    x = doc.createElement('script');
+    if (usePolyfills(win, win.location, x, 'import("")')) {
+        // requires the es5/polyfilled core
+        x.src = resourcesUrl + appCorePolyfilled;
+    }
+    else {
+        // let's do this!
+        x.src = resourcesUrl + appCore;
+        x.setAttribute('type', 'module');
+        x.setAttribute('crossorigin', true);
+    }
+    x.setAttribute('data-resources-url', resourcesUrl);
+    x.setAttribute('data-namespace', fsNamespace);
+    doc.head.appendChild(x);
+}
+function usePolyfills(win, location, scriptElm, dynamicImportTest) {
+    // fyi, dev mode has verbose if/return statements
+    // but it minifies to a nice 'lil one-liner ;)
+    if (location.search.indexOf('core=esm') > 0) {
+        // force esm build
+        return false;
+    }
+    if ((location.search.indexOf('core=es5') > 0) ||
+        (location.protocol === 'file:') ||
+        (!(win.customElements && win.customElements.define)) ||
+        (!win.fetch) ||
+        (!(win.CSS && win.CSS.supports && win.CSS.supports('color', 'var(--c)'))) ||
+        (!('noModule' in scriptElm))) {
+        // es5 build w/ polyfills
+        return true;
+    }
+    // final test to see if this browser support dynamic imports
+    return doesNotSupportsDynamicImports(dynamicImportTest);
+}
+function doesNotSupportsDynamicImports(dynamicImportTest) {
+    try {
+        new Function(dynamicImportTest);
+        return false;
+    }
+    catch (e) { }
+    return true;
+}
+function createComponentOnReadyPrototype(win, namespace, HTMLElementPrototype) {
+    (win['s-apps'] = win['s-apps'] || []).push(namespace);
+    if (!HTMLElementPrototype.componentOnReady) {
+        HTMLElementPrototype.componentOnReady = function componentOnReady() {
+            /*tslint:disable*/
+            var elm = this;
+            function executor(resolve) {
+                if (elm.nodeName.indexOf('-') > 0) {
+                    // window hasn't loaded yet and there's a
+                    // good chance this is a custom element
+                    var apps = win['s-apps'];
+                    var appsReady = 0;
+                    // loop through all the app namespaces
+                    for (var i = 0; i < apps.length; i++) {
+                        // see if this app has "componentOnReady" setup
+                        if (win[apps[i]].componentOnReady) {
+                            // this app's core has loaded call its "componentOnReady"
+                            if (win[apps[i]].componentOnReady(elm, resolve)) {
+                                // this component does belong to this app and would
+                                // have fired off the resolve fn
+                                // let's stop here, we're good
+                                return;
+                            }
+                            appsReady++;
+                        }
+                    }
+                    if (appsReady < apps.length) {
+                        // not all apps are ready yet
+                        // add it to the queue to be figured out when they are
+                        (win['s-cr'] = win['s-cr'] || []).push([elm, resolve]);
+                        return;
+                    }
+                }
+                // not a recognized app component
+                resolve(null);
+            }
+            // callback wasn't provided, let's return a promise
+            if (win.Promise) {
+                // use native/polyfilled promise
+                return new win.Promise(executor);
+            }
+            // promise may not have been polyfilled yet
+            return { then: executor };
+        };
+    }
+}
+
+
+  init(win, doc, namespace, fsNamespace, resourcesUrl, appCore, appCoreSsr, appCorePolyfilled, hydratedCssClass, components);
+
+  })(window, document, "App","app",0,"app.core.js","es5-build-disabled.js","hydrated",[["app-home","app-home",1],["app-root","app-root",1],["ma-about","ma-about",1],["ma-clients","ma-clients",1],["ma-footer","app-root",1],["ma-header","app-home",1,[["carouselImgs",5],["clear",5],["index",5]]],["ma-navbar","app-root",1,[["elem",7]]],["ma-services","ma-services",1],["ma-team","ma-team",1,[["team",5]]],["stencil-route","app-root",1,[["component",1,0,1,2],["componentProps",1],["componentUpdated",1],["el",7],["exact",1,0,1,3],["group",1,0,1,2],["groupMatch",1],["history",1],["isServer",3,0,0,0,"isServer"],["location",1],["match",5],["queue",3,0,0,0,"queue"],["routeRender",1],["scrollTopOffset",1,0,"scroll-top-offset",4],["url",1,0,1,2]]],["stencil-route-link","app-root",0,[["activeClass",1,0,"active-class",2],["anchorClass",1,0,"anchor-class",2],["anchorRole",1,0,"anchor-role",2],["anchorTabIndex",1,0,"anchor-tab-index",2],["anchorTitle",1,0,"anchor-title",2],["custom",1,0,1,2],["el",7],["exact",1,0,1,3],["history",1],["location",1],["match",5],["root",1,0,1,2],["strict",1,0,1,3],["url",1,0,1,2],["urlMatch",1,0,"url-match",2]]],["stencil-route-switch","app-root",0,[["el",7],["group",1,0,1,2],["location",1],["queue",3,0,0,0,"queue"],["scrollTopOffset",1,0,"scroll-top-offset",4]]],["stencil-router","app-root",0,[["history",5],["historyType",1,0,"history-type",2],["location",5],["root",1,0,1,2],["titleSuffix",1,0,"title-suffix",2]]]],HTMLElement.prototype);
