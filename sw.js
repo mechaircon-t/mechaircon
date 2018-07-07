@@ -49,7 +49,7 @@ self.__precacheManifest = [
   },
   {
     "url": "build/app.js",
-    "revision": "25006be6cec744ae8c2b3406f518c736"
+    "revision": "b02722035432db41561284cc7102ecb0"
   },
   {
     "url": "build/app/1slpqur3.es5.js",
@@ -109,7 +109,7 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "254910a5e56ee458970d0b28e1bf5f94"
+    "revision": "f3cecc01aa1e671d653f55bbc2d3eb08"
   },
   {
     "url": "manifest.json",
